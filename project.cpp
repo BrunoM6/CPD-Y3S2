@@ -57,7 +57,7 @@ void OnMult(int m_ar, int m_br)
 	sprintf(st, "Time: %3.3f seconds\n", (double)(Time2 - Time1) / CLOCKS_PER_SEC);
 	cout << st;
 
-	// display 10 elements of the result matrix to verify correctness
+	// display 10 elements of the result matrix tto verify correctness
 	cout << "Result matrix: " << endl;
 	for(i=0; i<1; i++)
 	{	for(j=0; j<min(10,m_br); j++)
@@ -75,12 +75,24 @@ void OnMult(int m_ar, int m_br)
 // add code here for line x line matriz multiplication
 void OnMultLine(int m_ar, int m_br)
 {
-		for (int i = 0; i < m_ar; i++) 
-        {
-            for (int k = 0; j < m_ar; j++) {
-							
-						}
-        }
+    SYSTEMTIME time1, time2;
+
+		char time_string[100];
+		double *matrix1, matrix2, result;
+
+		pha = (double *)malloc((m_ar * m_ar) * sizeof(double));
+		phb = (double *)malloc((m_ar * m_ar) * sizeof(double));
+		phc = (double *)malloc((m_ar * m_ar) * sizeof(double));
+		
+		for (int i = 0; i < m_ar; i++)
+		{
+			for (int j = 0; j < m_ar; j++)
+			{
+				pha[i * m_ar + j] = (double)1.0;
+				phb[i * m_br + j] = (double)(i + 1);
+				phc[i * m_br + j] = (double)(0.0);
+			}
+		}
     
 }
 
