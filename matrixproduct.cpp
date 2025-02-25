@@ -75,7 +75,7 @@ void OnMult(int m_ar, int m_br)
 // add code here for line x line matriz multiplication
 void OnMultLine(int m_ar, int m_br)
 {
-    SYSTEMTIME time1, time2;
+    SYSTEMTIME time_start, time_end;
 
 		char time_string[100];
 		double *matrix1, matrix2, result;
@@ -94,13 +94,52 @@ void OnMultLine(int m_ar, int m_br)
 			}
 		}
     
+		time_start = clock();
+
+		//algorithm
+
+		time_end = clock();
+
+		sprintf(time_string, "Time: %3.3f seconds", (double)(time_end - time_start) / CLOCKS_PER_SEC);
+
+		free(pha);
+		free(phb);
+		free(phc);
 }
 
 // add code here for block x block matriz multiplication
 void OnMultBlock(int m_ar, int m_br, int bkSize)
 {
-    
-    
+	SYSTEMTIME time_start, time_end;
+
+	char time_string[100];
+	double *matrix1, matrix2, result;
+
+	pha = (double *)malloc((m_ar * m_ar) * sizeof(double));
+	phb = (double *)malloc((m_ar * m_ar) * sizeof(double));
+	phc = (double *)malloc((m_ar * m_ar) * sizeof(double));
+	
+	for (int i = 0; i < m_ar; i++)
+	{
+		for (int j = 0; j < m_ar; j++)
+		{
+			pha[i * m_ar + j] = (double)1.0;
+			phb[i * m_br + j] = (double)(i + 1);
+			phc[i * m_br + j] = (double)(0.0);
+		}
+	}
+	
+	time_start = clock();
+
+	//algorithm
+	
+	time_end = clock();
+
+	sprintf(time_string, "Time: %3.3f seconds", (double)(time_end - time_start) / CLOCKS_PER_SEC);
+
+	free(pha);
+	free(phb);
+	free(phc);
 }
 
 
