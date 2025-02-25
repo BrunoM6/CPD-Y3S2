@@ -96,7 +96,18 @@ void OnMultLine(int m_ar, int m_br)
     
 		time_start = clock();
 
-		//algorithm
+		for (int i = 0; i < m_ar; i++)
+		{
+			for (int j = 0; j < m_br; j++)
+			{
+				double temp = 0.0;
+				for (int k = 0; k < m_br; k++)
+				{
+					temp += pha[i * m_ar + k] * phb[k * m_ar + j];
+				}
+				phc[i * m_ar + j] = temp;
+			}
+		}
 
 		time_end = clock();
 
@@ -131,7 +142,7 @@ void OnMultBlock(int m_ar, int m_br, int bkSize)
 	
 	time_start = clock();
 
-	//algorithm
+	//algorithm block
 	
 	time_end = clock();
 
